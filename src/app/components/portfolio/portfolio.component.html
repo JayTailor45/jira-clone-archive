@@ -1,0 +1,93 @@
+<div class="absolute min-h-screen w-full">
+  <div class="absolute top-0 w-full h-1/2 bg-cover bg-bottom"
+    style="background-image: url(https://images.pexels.com/photos/841228/pexels-photo-841228.jpeg);"></div>
+</div>
+<section class="flex justify-center items-center min-h-screen">
+  <div class="relative">
+    <div class="bg-card"></div>
+    <div class="relative md:flex space-x-12 z-10 max-w-4xl bg-white p-12 rounded-md shadow-md">
+      <div class="flex flex-col space-y-6 py-4 justify-between">
+        <div>
+          <p class="text-lg">Hello I'm</p>
+          <h1 class="text-5xl font-bold text-gray-800">Jay Tailor</h1>
+        </div>
+        <p class="text-lg leading-relaxed">Angular developer who loves to explore different aspects of web development
+        </p>
+        <div class="inline-flex space-x-4 text-xl">
+          <ion-icon name="logo-twitter"></ion-icon>
+          <ion-icon name="logo-github"></ion-icon>
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </div>
+      </div>
+      <img src="https://pbs.twimg.com/profile_images/1314997605303156741/-KEBO_ii_400x400.jpg"
+        class="w-64 rounded-full border-4 white-border shadow-md flex-shrink-0">
+    </div>
+  </div>
+</section>
+<!-- Service section -->
+<section class="bg-gray-50 pt-16 pb-28 px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-6xl text-gray-800 font-bold">Services</h2>
+      <p class="pt-2">Here's what I offer</p>
+    </div>
+    <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+      <div class="relative" *ngFor="let service of services">
+        <div class="bg-card"></div>
+        <div class="relative z-10 bg-white p-12 rounded-md shadow-md">
+          <ion-icon [name]="service.icon" class="text-6xl text-cyan-500"></ion-icon>
+          <h3 class="text-2xl font-bold mt-3">{{service.title}}</h3>
+          <p class="mt-4">{{service.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Work section -->
+<section class="bg-gray-50 pt-16 pb-28 px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-6xl text-gray-800 font-bold">Work</h2>
+      <p class="pt-2">Some of my work</p>
+    </div>
+    <div class="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-md shadow-md" [class.lg:col-span-2]="first || last"
+        *ngFor="let work of works; let first = first; let last = last;">
+        <img [src]="work.image" class="h-80 w-full object-cover">
+        <div class="p-8">
+          <h2 class="font-bold text2xl">{{work.title}}</h2>
+          <p class="pt-3">{{work.content}}</p>
+          <a href="#" class="button-gradient">View
+            More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact me section -->
+<section class="bg-gray-50 pt-16 pb-28 px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-6xl text-gray-800 font-bold">Contact</h2>
+      <p class="pt-2">Get in touch with me </p>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto">
+    <div class="mt-20">
+      <div class="relative">
+        <div class="bg-card"></div>
+        <div class="relative z-10 bg-white sm:p-12 p-8 rounded-md shadow-md ">
+          <div class="w-full flex flex-col">
+            <div class="sm:flex flex-row sm:space-x-4">
+              <input class="input" type="text" placeholder="Name">
+              <input class="input" type="text" placeholder="Email">
+            </div>
+            <input class="input" type="text" placeholder="Subject">
+            <textarea class="input" rows="5" placeholder="Message"></textarea>
+          </div>
+          <a href="#" class="button-gradient">Send Message</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
