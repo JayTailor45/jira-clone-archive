@@ -1,10 +1,131 @@
-<div class="h-screen w-screen">
-  <div class="bg-green-400 h-14">
-    <i nz-icon nzType="appstore" nzTheme="fill"></i>
-    <button nz-button nzType="primary" class="font-bold">Create</button>
-  </div>
+<div class="h-full w-full">
+  <header class="pl-4 h-14">
+    <nav class="flex h-full space-x-2 items-center mr-4">
+      <div class="flex content-center hover-effect rounded-full cursor-pointer">
+        <i nz-icon nzType="appstore" nzTheme="fill"></i>
+      </div>
+      <div class="flex content-center">
+        <img
+          src="./assets/images/logos/jira-main.svg"
+          class="w-40 h-6 hover:bg-blue-100 rounded-sm hover:text-blue-600 cursor-pointer text-blue-500"
+          alt="Jira Logo"
+        />
+      </div>
+      <div class="nav-items flex flex-row space-x-4 items-center">
+        <a class="hover-effect">Your work</a>
+        <a
+          class="hover-effect"
+          nz-dropdown
+          nzTrigger="click"
+          [nzDropdownMenu]="projectMenu"
+        >
+          Projects
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #projectMenu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Project 1</li>
+            <li nz-menu-item>Project 2</li>
+          </ul>
+        </nz-dropdown-menu>
+        <a
+          class="hover-effect"
+          nz-dropdown
+          nzTrigger="click"
+          [nzDropdownMenu]="filterMenu"
+        >
+          Filters
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #filterMenu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Filter by priority</li>
+            <li nz-menu-item>Setup custom filter</li>
+          </ul>
+        </nz-dropdown-menu>
+        <a
+          class="hover-effect"
+          nz-dropdown
+          nzTrigger="click"
+          [nzDropdownMenu]="dashboardMenu"
+        >
+          Dashboards
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #dashboardMenu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>No dashboard avaliable</li>
+          </ul>
+        </nz-dropdown-menu>
+        <a
+          class="hover-effect"
+          nz-dropdown
+          nzTrigger="click"
+          [nzDropdownMenu]="peopleMenu"
+        >
+          People
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #peopleMenu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Jay Tailor</li>
+          </ul>
+        </nz-dropdown-menu>
+        <a
+          class="hover-effect"
+          nz-dropdown
+          nzTrigger="click"
+          [nzDropdownMenu]="appsMenu"
+        >
+          Apps
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #appsMenu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Slack</li>
+            <li nz-menu-item>GitHub</li>
+            <li nz-menu-item>GitLabs</li>
+          </ul>
+        </nz-dropdown-menu>
+        <button nz-button nzType="primary" class="font-bold">Create</button>
+      </div>
+      <div class="flex flex-grow"></div>
+      <div class="flex flex-row space-x-4 items-center flex-none">
+        <div
+          class="ring-2 text-gray-300 ring-gray-300 rounded-sm flex flex-row items-center p-1"
+        >
+          <i nz-icon nzType="search"></i>
+          <input class="p-1" type="text" placeholder="Search" />
+        </div>
+        <div
+          class="flex content-center hover-effect rounded-full cursor-pointer transform rotate-45 text-lg"
+        >
+          <i nz-icon nzType="bell" nzTheme="fill"></i>
+        </div>
+        <div
+          class="flex content-center hover-effect rounded-full cursor-pointer text-lg"
+        >
+          <i nz-icon nzType="question-circle" nzTheme="fill"></i>
+        </div>
+        <div
+          class="flex content-center hover-effect rounded-full cursor-pointer text-lg"
+        >
+          <i nz-icon nzType="setting" nzTheme="fill"></i>
+        </div>
+        <div class="flex content-center items-center">
+          <div
+            class="p-2 w-8 leading-none font-bold bg-green-700 rounded-full cursor-pointer text-center text-gray-200"
+          >
+            <span>J</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="h-1 bg-gradient-to-t from-gray-200 to-white"></div>
+
   <div class="flex h-full">
-    <div class="h-full w-72 bg-purple-400">Sidebar</div>
-    <div class="h-full w-full bg-red-400">Board</div>
+    <!-- <div class="h-full w-72 bg-purple-400">Sidebar</div>
+    <div class="h-full w-full bg-red-400">Board</div> -->
   </div>
 </div>

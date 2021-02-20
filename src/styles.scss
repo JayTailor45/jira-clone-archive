@@ -4,4 +4,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
+
+.hover-effect {
+  @apply font-semibold p-1.5 hover:bg-blue-100 rounded-sm hover:text-blue-600;
+}
+
 @import 'tailwindcss/utilities';
