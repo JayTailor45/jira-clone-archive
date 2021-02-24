@@ -124,7 +124,7 @@
   </header>
   <div class="h-1 bg-gradient-to-t from-gray-200 to-white"></div>
 
-  <div class="flex h-full">
+  <div class="flex" style="height: calc(100% - 60px)">
     <div class="border-r-2 border-gray-200">
       <div class="flex flex-row items-center rounded-md my-4">
         <div class="w-10 p-2 mx-2">
@@ -135,114 +135,129 @@
           <p class="font-thin">Classic software project</p>
         </div>
       </div>
-      <div class="h-full flex-grow w-72 overflow-y-scroll">
-        <div class="items-container mx-2 mt-2">
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i class="text-xl" nz-icon nzType="build" nzTheme="outline"></i>
+      <div
+        class="overflow-auto"
+        style="height: calc(100vh - 10rem)"
+      >
+        <div class="w-72">
+          <div class="items-container mx-2 mt-2">
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i class="text-xl" nz-icon nzType="build" nzTheme="outline"></i>
+              </div>
+              <a href="#">Roadmap</a>
             </div>
-            <a href="#">Roadmap</a>
-          </div>
-          <div
-            class="flex flex-row items-center rounded-md bg-blue-100 text-blue-600 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i
-                class="text-xl"
-                nz-icon
-                nzType="insert-row-above"
-                nzTheme="outline"
-              ></i>
+            <div
+              class="flex flex-row items-center rounded-md bg-blue-100 text-blue-600 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i
+                  class="text-xl"
+                  nz-icon
+                  nzType="insert-row-above"
+                  nzTheme="outline"
+                ></i>
+              </div>
+              <a href="#">Kanban board</a>
             </div>
-            <a href="#">Kanban board</a>
-          </div>
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i
-                class="text-xl"
-                nz-icon
-                nzType="line-chart"
-                nzTheme="outline"
-              ></i>
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i
+                  class="text-xl"
+                  nz-icon
+                  nzType="line-chart"
+                  nzTheme="outline"
+                ></i>
+              </div>
+              <a href="#">Reports</a>
             </div>
-            <a href="#">Reports</a>
-          </div>
-          <hr />
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer my-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i class="text-xl" nz-icon nzType="inbox" nzTheme="outline"></i>
+            <hr />
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer my-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i class="text-xl" nz-icon nzType="inbox" nzTheme="outline"></i>
+              </div>
+              <a href="#">Issues</a>
             </div>
-            <a href="#">Issues</a>
-          </div>
 
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i
-                class="text-xl"
-                nz-icon
-                nzType="database"
-                nzTheme="outline"
-              ></i>
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i
+                  class="text-xl"
+                  nz-icon
+                  nzType="database"
+                  nzTheme="outline"
+                ></i>
+              </div>
+              <a href="#">Components</a>
             </div>
-            <a href="#">Components</a>
-          </div>
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i class="text-xl" nz-icon nzType="code" nzTheme="outline"></i>
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i class="text-xl" nz-icon nzType="code" nzTheme="outline"></i>
+              </div>
+              <a href="#">Code</a>
             </div>
-            <a href="#">Code</a>
-          </div>
 
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i class="text-xl" nz-icon nzType="tags" nzTheme="outline"></i>
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i class="text-xl" nz-icon nzType="tags" nzTheme="outline"></i>
+              </div>
+              <a href="#">Releases</a>
             </div>
-            <a href="#">Releases</a>
-          </div>
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i class="text-xl" nz-icon nzType="folder" nzTheme="outline"></i>
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i
+                  class="text-xl"
+                  nz-icon
+                  nzType="folder"
+                  nzTheme="outline"
+                ></i>
+              </div>
+              <a href="#">Project pages</a>
             </div>
-            <a href="#">Project pages</a>
-          </div>
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i
-                class="text-xl"
-                nz-icon
-                nzType="file-add"
-                nzTheme="outline"
-              ></i>
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i
+                  class="text-xl"
+                  nz-icon
+                  nzType="file-add"
+                  nzTheme="outline"
+                ></i>
+              </div>
+              <a href="#">Add item</a>
             </div>
-            <a href="#">Add item</a>
-          </div>
-          <div
-            class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
-          >
-            <div class="w-2 p-2 mr-6">
-              <i class="text-xl" nz-icon nzType="setting" nzTheme="outline"></i>
+            <div
+              class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+            >
+              <div class="w-2 p-2 mr-6">
+                <i
+                  class="text-xl"
+                  nz-icon
+                  nzType="setting"
+                  nzTheme="outline"
+                ></i>
+              </div>
+              <a href="#">Project settings</a>
             </div>
-            <a href="#">Project settings</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="h-full w-full">Board</div>
+    <div class="w-full">Board</div>
   </div>
 </div>
