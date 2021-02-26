@@ -25,6 +25,8 @@ import {
   DatabaseOutline,
   InboxOutline,
   InsertRowAboveOutline,
+  CaretLeftOutline,
+  CaretRightOutline,
 } from '@ant-design/icons-angular/icons';
 
 const icons: IconDefinition[] = [
@@ -42,6 +44,8 @@ const icons: IconDefinition[] = [
   DatabaseOutline,
   InboxOutline,
   InsertRowAboveOutline,
+  CaretLeftOutline,
+  CaretRightOutline,
 ];
 
 const routes: Routes = [
