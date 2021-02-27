@@ -124,8 +124,140 @@
   </header>
   <div class="h-1 bg-gradient-to-t from-gray-200 to-white"></div>
 
-  <div class="flex h-full">
-    <!-- <div class="h-full w-72 bg-purple-400">Sidebar</div>
-    <div class="h-full w-full bg-red-400">Board</div> -->
+  <div
+    class="flex transition-all"
+    [class]="isSidebarOpen ? 'ml-72' : 'ml-2'"
+    style="height: calc(100% - 60px)"
+  >
+    <div class="bg-gray-300 h-full">
+      <div class="w-0.5 relative">
+        <div
+          class="absolute flex p-1 hover:bg-blue-600 bg-gray-100 text-black hover:text-white -left-2 top-7 rounded-full cursor-pointer shadow-md ring-1"
+          (click)="toggleSidebar()"
+        >
+          <i
+            class=""
+            nz-icon
+            [nzType]="isSidebarOpen ? 'caret-left' : 'caret-right'"
+            nzTheme="outline"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div class="w-full">Board</div>
+  </div>
+</div>
+
+<div
+  class="fixed top-16 left-0 transition-all ease-in-out"
+  [class]="isSidebarOpen ? '' : '-left-72'"
+>
+  <div class="flex flex-row items-center rounded-md my-4">
+    <div class="w-10 p-2 mx-2">
+      <img src="./assets/images/projectavatar.svg" alt="projet avatar" />
+    </div>
+    <div class="detail">
+      <p class="font-semibold">Jira-Clone</p>
+      <p class="font-thin">Classic software project</p>
+    </div>
+  </div>
+  <div class="overflow-auto" style="height: calc(100% - 75px)">
+    <div class="w-72">
+      <div class="items-container mx-2 mt-2">
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="build" nzTheme="outline"></i>
+          </div>
+          <a href="#">Roadmap</a>
+        </div>
+        <div
+          class="flex flex-row items-center rounded-md bg-blue-100 text-blue-600 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i
+              class="text-xl"
+              nz-icon
+              nzType="insert-row-above"
+              nzTheme="outline"
+            ></i>
+          </div>
+          <a href="#">Kanban board</a>
+        </div>
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i
+              class="text-xl"
+              nz-icon
+              nzType="line-chart"
+              nzTheme="outline"
+            ></i>
+          </div>
+          <a href="#">Reports</a>
+        </div>
+        <hr />
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer my-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="inbox" nzTheme="outline"></i>
+          </div>
+          <a href="#">Issues</a>
+        </div>
+
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="database" nzTheme="outline"></i>
+          </div>
+          <a href="#">Components</a>
+        </div>
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="code" nzTheme="outline"></i>
+          </div>
+          <a href="#">Code</a>
+        </div>
+
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="tags" nzTheme="outline"></i>
+          </div>
+          <a href="#">Releases</a>
+        </div>
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="folder" nzTheme="outline"></i>
+          </div>
+          <a href="#">Project pages</a>
+        </div>
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="file-add" nzTheme="outline"></i>
+          </div>
+          <a href="#">Add item</a>
+        </div>
+        <div
+          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+        >
+          <div class="w-2 p-2 mr-6">
+            <i class="text-xl" nz-icon nzType="setting" nzTheme="outline"></i>
+          </div>
+          <a href="#">Project settings</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
