@@ -27,7 +27,12 @@ import {
   InsertRowAboveOutline,
   CaretLeftOutline,
   CaretRightOutline,
+  ThunderboltOutline,
+  StarOutline,
+  ShareAltOutline,
+  EllipsisOutline,
 } from '@ant-design/icons-angular/icons';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const icons: IconDefinition[] = [
   AppstoreFill,
@@ -46,6 +51,10 @@ const icons: IconDefinition[] = [
   InsertRowAboveOutline,
   CaretLeftOutline,
   CaretRightOutline,
+  ThunderboltOutline,
+  StarOutline,
+  ShareAltOutline,
+  EllipsisOutline,
 ];
 
 const routes: Routes = [
@@ -65,6 +74,7 @@ const routes: Routes = [
     NzIconModule.forChild(icons),
     HttpClientModule,
     NzDropDownModule,
+    SharedModule,
   ],
 })
 export class JiraBoardModule {}

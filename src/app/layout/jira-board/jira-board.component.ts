@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JiraBoardComponent implements OnInit {
   isSidebarOpen = true;
+  breadcrumb: string[] = [];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.breadcrumb = ['Projects', 'Jira-clone', 'JC board'];
+  }
 
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;

@@ -144,12 +144,70 @@
         </div>
       </div>
     </div>
-    <div class="w-full">Board</div>
+    <div class="w-full flex flex-col gap-2 mx-9">
+      <div class="mt-6">
+        <app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+      </div>
+      <div class="header flex justify-between mt-1">
+        <h4 class="font-semibold text-2xl">Kanban board</h4>
+        <div class="actions">
+          <button nz-button nzType="link">
+            <i nz-icon nzType="thunderbolt" nzTheme="outline"></i>
+          </button>
+          <button nz-button nzType="link">
+            <i nz-icon nzType="star" nzTheme="outline"></i>
+          </button>
+          <a
+            class="hover-effect"
+            nz-dropdown
+            nzTrigger="click"
+            [nzDropdownMenu]="releaseMenu"
+          >
+            Release
+            <i nz-icon nzType="down"></i>
+          </a>
+          <nz-dropdown-menu #releaseMenu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>Create a release</li>
+            </ul>
+          </nz-dropdown-menu>
+          <button nz-button nzType="link">
+            <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+          </button>
+          <button nz-button nzType="primary">
+            <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-row min-h-14 space-x-6 mt-6">
+        <div
+          class="ring-2 text-gray-300 ring-gray-300 rounded-sm flex flex-row items-center p-1 w-48 h-8"
+        >
+          <input class="p-1" type="text" placeholder="Search" />
+          <i nz-icon nzType="search"></i>
+        </div>
+        <div class="user-selector flex -space-x-2">
+          <div
+            class="user-avatar w-8 h-8 bg-green-700 rounded-full flex text-center items-center content-center p-3 cursor-pointer leading-none ring-2 ring-white transform hover:-translate-y-2 hover:z-10 ease-in-out duration-500"
+            *ngFor="let person of ['J', 'A', 'Y', '']"
+          >
+            <span class="text-white font-semibold">{{ person }}</span>
+          </div>
+        </div>
+        <button nz-button nzType="link" class="ml-5 text-gray-700 font-bold">
+          Only My Issues
+        </button>
+        <button nz-button nzType="link" class="text-gray-700 font-bold">
+          Recently Updated
+        </button>
+      </div>
+      <div>kanban board</div>
+    </div>
   </div>
 </div>
 
 <div
-  class="fixed top-16 left-0 transition-all ease-in-out"
+  class="fixed top-16 left-0 transition-all ease-in-out flex-shrink-0"
   [class]="isSidebarOpen ? '' : '-left-72'"
 >
   <div class="flex flex-row items-center rounded-md my-4">
