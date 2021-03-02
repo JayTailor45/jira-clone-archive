@@ -31,6 +31,8 @@ import {
   StarOutline,
   ShareAltOutline,
   EllipsisOutline,
+  UpOutline,
+  DownOutline,
 } from '@ant-design/icons-angular/icons';
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -55,6 +57,8 @@ const icons: IconDefinition[] = [
   StarOutline,
   ShareAltOutline,
   EllipsisOutline,
+  UpOutline,
+  DownOutline,
 ];
 
 const routes: Routes = [

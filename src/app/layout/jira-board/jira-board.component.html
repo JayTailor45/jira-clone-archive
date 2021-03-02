@@ -148,7 +148,7 @@
       <div class="mt-6">
         <app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
       </div>
-      <div class="header flex justify-between mt-1">
+      <div class="flex justify-between mt-1">
         <h4 class="font-semibold text-2xl">Kanban board</h4>
         <div class="actions">
           <button nz-button nzType="link">
@@ -201,7 +201,114 @@
           Recently Updated
         </button>
       </div>
-      <div>kanban board</div>
+      <!-- Board -->
+      <div class="">
+        <div class="">
+          <div class="headers flex flex-row space-x-4 justify-between">
+            <div class="header">
+              <div class="inline-block mr-1">BACKLOG</div>
+              <span>4</span>
+            </div>
+            <div class="header">
+              <div class="inline-block mr-1">SELECTED FOR DEVELOPMENT</div>
+              <span>3</span>
+            </div>
+            <div class="header">
+              <div class="inline-block mr-1">IN PROGRESS</div>
+              <span>1</span>
+            </div>
+            <div class="header">
+              <div class="inline-block mr-1">DONE</div>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="board-cols flex flex-row space-x-4 justify-between">
+            <div class="backlog flex-1 bg-gray-100">
+              <div
+                *ngFor="let item of tickets"
+                class="rounded-md p-3 shadow m-1"
+              >
+                <h6>{{ item.title }}</h6>
+                <div class="flex justify-between content-center mt-4">
+                  <div class="start flex flex-row space-x-2">
+                    <div class="issue-type">
+                      <div *ngIf="item.issueType === 'STORY'">
+                        <img
+                          src="./assets/images/icons/user_story.svg"
+                          alt="story icon"
+                        />
+                      </div>
+                      <div *ngIf="item.issueType === 'EPIC'">
+                        <img
+                          src="./assets/images/icons/epic.svg"
+                          alt="epic icon"
+                        />
+                      </div>
+                      <div *ngIf="item.issueType === 'TASK'">
+                        <img src="./assets/images/icons/task.svg" alt="task" />
+                      </div>
+                      <div *ngIf="item.issueType === 'SUB-TASK'">
+                        <img
+                          src="./assets/images/icons/subtask.svg"
+                          alt="sub task"
+                        />
+                      </div>
+                      <div *ngIf="item.issueType === 'BUG'">
+                        <img src="./assets/images/icons/bug.svg" alt="bug" />
+                      </div>
+                    </div>
+                    <div class="priority flex">
+                      <div class="flex">
+                        <i
+                          class="text-md"
+                          [class]="getPriorityClass(item)"
+                          nz-icon
+                          [nzType]="
+                            item.priority === 'HIGHEST' ||
+                            item.priority === 'HIGH'
+                              ? 'up'
+                              : 'down'
+                          "
+                          nzTheme="outline"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="end flex space-x-2">
+                    <div>
+                      <p>{{ item.ticketKey }}</p>
+                    </div>
+                    <div>
+                      <div
+                        class="user-avatar w-4 h-4 bg-green-700 rounded-full flex items-center justify-center cursor-pointer p-3"
+                      >
+                        <span class="text-white font-semibold">{{
+                          item.assignedTo[0]
+                        }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backlog flex-1 bg-gray-100">
+              <!-- <div *ngFor="let item of tickets" class="rounded-md">
+                <h6>{{ item.title }}</h6>
+              </div> -->
+            </div>
+            <div class="backlog flex-1 bg-gray-100">
+              <!-- <div *ngFor="let item of tickets" class="rounded-md">
+                <h6>{{ item.title }}</h6>
+              </div> -->
+            </div>
+            <div class="backlog flex-1 bg-gray-100">
+              <!-- <div *ngFor="let item of tickets" class="rounded-md">
+                <h6>{{ item.title }}</h6>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

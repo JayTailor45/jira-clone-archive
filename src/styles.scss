@@ -9,4 +9,7 @@
   @apply font-semibold p-1.5 hover:bg-blue-100 rounded-sm hover:text-blue-600;
 }
 
+.header {
+  @apply flex-1 bg-gray-100 p-4 text-xs;
+}
 @import "tailwindcss/utilities";
