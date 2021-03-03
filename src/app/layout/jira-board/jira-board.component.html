@@ -7,7 +7,7 @@
       <div class="flex content-center">
         <img
           src="./assets/images/logos/jira-main.svg"
-          class="w-40 h-6 hover:bg-blue-100 rounded-sm hover:text-blue-600 cursor-pointer text-blue-500"
+          class="w-32 h-5 hover:bg-blue-100 rounded-sm hover:text-blue-600 cursor-pointer text-blue-500"
           alt="Jira Logo"
         />
       </div>
@@ -92,10 +92,10 @@
       <div class="flex flex-grow"></div>
       <div class="flex flex-row space-x-4 items-center flex-none">
         <div
-          class="ring-2 text-gray-300 ring-gray-300 rounded-sm flex flex-row items-center p-1"
+          class="flex flex-col items-center p-1 w-48 h-8 relative"
         >
-          <i nz-icon nzType="search"></i>
-          <input class="p-1" type="text" placeholder="Search" />
+          <i nz-icon nzType="search" class="absolute left-3 top-3"></i>
+          <input class="ring-1 ring-gray-300 rounded-sm p-1 pl-8 outline-none text-black focus:ring-2 focus:ring-blue-600 w-full hover:bg-gray-200" type="text" placeholder="Search" />
         </div>
         <div
           class="flex content-center hover-effect rounded-full cursor-pointer transform rotate-45 text-lg"
@@ -114,7 +114,7 @@
         </div>
         <div class="flex content-center items-center">
           <div
-            class="p-2 w-8 leading-none font-bold bg-green-700 rounded-full cursor-pointer text-center text-gray-200"
+            class="p-1 h-8 w-8 font-bold bg-green-700 rounded-full cursor-pointer text-center justify-center text-gray-200"
           >
             <span>J</span>
           </div>
@@ -144,21 +144,21 @@
         </div>
       </div>
     </div>
-    <div class="w-full flex flex-col gap-2 mx-9">
+    <div class="w-full flex flex-col mx-9">
       <div class="mt-6">
         <app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
       </div>
       <div class="flex justify-between mt-1">
         <h4 class="font-semibold text-2xl">Kanban board</h4>
         <div class="actions">
-          <button nz-button nzType="link">
+          <button nz-button nzType="link" class="text-gray-700">
             <i nz-icon nzType="thunderbolt" nzTheme="outline"></i>
           </button>
-          <button nz-button nzType="link">
+          <button nz-button nzType="link" class="text-gray-700">
             <i nz-icon nzType="star" nzTheme="outline"></i>
           </button>
           <a
-            class="hover-effect"
+            class="hover-effect text-gray-700"
             nz-dropdown
             nzTrigger="click"
             [nzDropdownMenu]="releaseMenu"
@@ -171,20 +171,20 @@
               <li nz-menu-item>Create a release</li>
             </ul>
           </nz-dropdown-menu>
-          <button nz-button nzType="link">
+          <button nz-button nzType="link" class="text-gray-700">
             <i nz-icon nzType="share-alt" nzTheme="outline"></i>
           </button>
-          <button nz-button nzType="primary">
+          <button nz-button nzType="link" class="text-gray-700">
             <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
           </button>
         </div>
       </div>
-      <div class="flex flex-row min-h-14 space-x-6 mt-6">
+      <div class="flex flex-row min-h-14 space-x-6 mt-2">
         <div
-          class="ring-2 text-gray-300 ring-gray-300 rounded-sm flex flex-row items-center p-1 w-48 h-8"
+          class="flex flex-col items-center p-1 w-48 h-8 relative"
         >
-          <input class="p-1" type="text" placeholder="Search" />
-          <i nz-icon nzType="search"></i>
+          <input class="ring-1 ring-gray-300 rounded-sm p-1 outline-none text-black focus:ring-2 focus:ring-blue-600 w-full hover:bg-gray-200" type="text"/>
+          <i nz-icon nzType="search" class="absolute right-3 top-3"></i>
         </div>
         <div class="user-selector flex -space-x-2">
           <div
@@ -194,17 +194,17 @@
             <span class="text-white font-semibold">{{ person }}</span>
           </div>
         </div>
-        <button nz-button nzType="link" class="ml-5 text-gray-700 font-bold">
+        <button nz-button nzType="link" class="ml-5 text-gray-500 font-bold">
           Only My Issues
         </button>
-        <button nz-button nzType="link" class="text-gray-700 font-bold">
+        <button nz-button nzType="link" class="text-gray-500 font-bold">
           Recently Updated
         </button>
       </div>
       <!-- Board -->
-      <div class="">
-        <div class="">
-          <div class="headers flex flex-row space-x-4 justify-between">
+      <div class="mt-6">
+        <div class="tickets-container relative overflow-y-scroll">
+          <div class="headers flex flex-row space-x-4 justify-between sticky top-0">
             <div class="header">
               <div class="inline-block mr-1">BACKLOG</div>
               <span>4</span>
@@ -229,7 +229,7 @@
                 class="rounded-md p-3 shadow m-1"
               >
                 <h6>{{ item.title }}</h6>
-                <div class="flex justify-between content-center mt-4">
+                <div class="flex justify-between items-center mt-4">
                   <div class="start flex flex-row space-x-2">
                     <div class="issue-type">
                       <div *ngIf="item.issueType === 'STORY'">
