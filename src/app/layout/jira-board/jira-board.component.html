@@ -1,17 +1,17 @@
-<div class="h-full w-full">
+<div class="w-full h-full">
   <header class="pl-4 h-14">
-    <nav class="flex h-full space-x-2 items-center mr-4">
-      <div class="flex content-center hover-effect rounded-full cursor-pointer">
+    <nav class="flex items-center h-full mr-4 space-x-2">
+      <div class="flex content-center rounded-full cursor-pointer hover-effect">
         <i nz-icon nzType="appstore" nzTheme="fill"></i>
       </div>
       <div class="flex content-center">
         <img
           src="./assets/images/logos/jira-main.svg"
-          class="w-40 h-6 hover:bg-blue-100 rounded-sm hover:text-blue-600 cursor-pointer text-blue-500"
+          class="w-32 h-5 text-blue-500 rounded-sm cursor-pointer hover:bg-blue-100 hover:text-blue-600"
           alt="Jira Logo"
         />
       </div>
-      <div class="nav-items flex flex-row space-x-4 items-center">
+      <div class="flex flex-row items-center nav-items space-x-4">
         <a class="hover-effect">Your work</a>
         <a
           class="hover-effect"
@@ -90,31 +90,33 @@
         <button nz-button nzType="primary" class="font-bold">Create</button>
       </div>
       <div class="flex flex-grow"></div>
-      <div class="flex flex-row space-x-4 items-center flex-none">
-        <div
-          class="ring-2 text-gray-300 ring-gray-300 rounded-sm flex flex-row items-center p-1"
-        >
-          <i nz-icon nzType="search"></i>
-          <input class="p-1" type="text" placeholder="Search" />
+      <div class="flex flex-row items-center flex-none space-x-4">
+        <div class="relative flex flex-col items-center w-48 h-8 p-1">
+          <i nz-icon nzType="search" class="absolute left-3 top-3"></i>
+          <input
+            class="w-full p-1 pl-8 text-black rounded-sm outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-blue-600 hover:bg-gray-200"
+            type="text"
+            placeholder="Search"
+          />
         </div>
         <div
-          class="flex content-center hover-effect rounded-full cursor-pointer transform rotate-45 text-lg"
+          class="flex content-center text-lg rounded-full cursor-pointer hover-effect transform rotate-45"
         >
           <i nz-icon nzType="bell" nzTheme="fill"></i>
         </div>
         <div
-          class="flex content-center hover-effect rounded-full cursor-pointer text-lg"
+          class="flex content-center text-lg rounded-full cursor-pointer hover-effect"
         >
           <i nz-icon nzType="question-circle" nzTheme="fill"></i>
         </div>
         <div
-          class="flex content-center hover-effect rounded-full cursor-pointer text-lg"
+          class="flex content-center text-lg rounded-full cursor-pointer hover-effect"
         >
           <i nz-icon nzType="setting" nzTheme="fill"></i>
         </div>
-        <div class="flex content-center items-center">
+        <div class="flex items-center content-center">
           <div
-            class="p-2 w-8 leading-none font-bold bg-green-700 rounded-full cursor-pointer text-center text-gray-200"
+            class="justify-center w-8 h-8 p-1 font-bold text-center text-gray-200 bg-green-700 rounded-full cursor-pointer"
           >
             <span>J</span>
           </div>
@@ -129,10 +131,10 @@
     [class]="isSidebarOpen ? 'ml-72' : 'ml-2'"
     style="height: calc(100% - 60px)"
   >
-    <div class="bg-gray-300 h-full">
+    <div class="h-full bg-gray-300">
       <div class="w-0.5 relative">
         <div
-          class="absolute flex p-1 hover:bg-blue-600 bg-gray-100 text-black hover:text-white -left-2 top-7 rounded-full cursor-pointer shadow-md ring-1"
+          class="absolute flex p-1 text-black bg-gray-100 rounded-full shadow-md cursor-pointer hover:bg-blue-600 hover:text-white -left-2 top-7 ring-1"
           (click)="toggleSidebar()"
         >
           <i
@@ -144,15 +146,120 @@
         </div>
       </div>
     </div>
-    <div class="w-full">Board</div>
+    <div class="flex flex-col w-full mx-9">
+      <div class="mt-6">
+        <app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+      </div>
+      <div class="flex justify-between mt-1">
+        <h4 class="text-2xl font-semibold">Kanban board</h4>
+        <div class="actions">
+          <button nz-button nzType="link" class="text-gray-700">
+            <i nz-icon nzType="thunderbolt" nzTheme="outline"></i>
+          </button>
+          <button nz-button nzType="link" class="text-gray-700">
+            <i nz-icon nzType="star" nzTheme="outline"></i>
+          </button>
+          <a
+            class="text-gray-700 hover-effect"
+            nz-dropdown
+            nzTrigger="click"
+            [nzDropdownMenu]="releaseMenu"
+          >
+            Release
+            <i nz-icon nzType="down"></i>
+          </a>
+          <nz-dropdown-menu #releaseMenu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>Create a release</li>
+            </ul>
+          </nz-dropdown-menu>
+          <button nz-button nzType="link" class="text-gray-700">
+            <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+          </button>
+          <button nz-button nzType="link" class="text-gray-700">
+            <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-row mt-2 min-h-14 space-x-6">
+        <div class="relative flex flex-col items-center w-48 h-8 p-1">
+          <input
+            class="w-full p-1 text-black rounded-sm outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-blue-600 hover:bg-gray-200"
+            type="text"
+          />
+          <i nz-icon nzType="search" class="absolute right-3 top-3"></i>
+        </div>
+        <div class="flex user-selector -space-x-2">
+          <div
+            class="flex items-center content-center w-8 h-8 p-3 leading-none text-center bg-green-700 rounded-full cursor-pointer user-avatar ring-2 ring-white transform hover:-translate-y-2 hover:z-10 ease-in-out duration-500"
+            *ngFor="let person of ['J', 'A', 'Y', '']"
+          >
+            <span class="font-semibold text-white">{{ person }}</span>
+          </div>
+        </div>
+        <button nz-button nzType="link" class="ml-5 font-bold text-gray-500">
+          Only My Issues
+        </button>
+        <button nz-button nzType="link" class="font-bold text-gray-500">
+          Recently Updated
+        </button>
+      </div>
+      <!-- Board -->
+      <div class="mt-6">
+        <div class="relative overflow-y-scroll tickets-container">
+          <div
+            class="sticky top-0 flex flex-row justify-between headers space-x-4"
+          >
+            <div class="header">
+              <div class="inline-block mr-1">BACKLOG</div>
+              <span>4</span>
+            </div>
+            <div class="header">
+              <div class="inline-block mr-1">SELECTED FOR DEVELOPMENT</div>
+              <span>3</span>
+            </div>
+            <div class="header">
+              <div class="inline-block mr-1">IN PROGRESS</div>
+              <span>1</span>
+            </div>
+            <div class="header">
+              <div class="inline-block mr-1">DONE</div>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="flex flex-row justify-between board-cols space-x-4">
+            <div
+              class="flex-1 bg-gray-100 backlog"
+              [id]="col.id"
+              *ngFor="let col of tickets"
+              cdkDropList
+              [cdkDropListData]="col.tasks"
+              [cdkDropListConnectedTo]="[
+                'BACKLOG',
+                'SELECTED FOR DEVELOPMENT',
+                'IN PROGRESS',
+                'DONE'
+              ]"
+              (cdkDropListDropped)="onTaskDrop($event)"
+            >
+              <app-ticket-item
+                cdkDrag
+                *ngFor="let task of col.tasks"
+                [item]="task"
+              ></app-ticket-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div
-  class="fixed top-16 left-0 transition-all ease-in-out"
+  class="fixed left-0 flex-shrink-0 top-16 transition-all ease-in-out"
   [class]="isSidebarOpen ? '' : '-left-72'"
 >
-  <div class="flex flex-row items-center rounded-md my-4">
+  <div class="flex flex-row items-center my-4 rounded-md">
     <div class="w-10 p-2 mx-2">
       <img src="./assets/images/projectavatar.svg" alt="projet avatar" />
     </div>
@@ -163,9 +270,9 @@
   </div>
   <div class="overflow-auto" style="height: calc(100% - 75px)">
     <div class="w-72">
-      <div class="items-container mx-2 mt-2">
+      <div class="mx-2 mt-2 items-container">
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="build" nzTheme="outline"></i>
@@ -173,7 +280,7 @@
           <a href="#">Roadmap</a>
         </div>
         <div
-          class="flex flex-row items-center rounded-md bg-blue-100 text-blue-600 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 text-blue-600 bg-blue-100 cursor-pointer rounded-md"
         >
           <div class="w-2 p-2 mr-6">
             <i
@@ -186,7 +293,7 @@
           <a href="#">Kanban board</a>
         </div>
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i
@@ -200,7 +307,7 @@
         </div>
         <hr />
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer my-2"
+          class="flex flex-row items-center my-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="inbox" nzTheme="outline"></i>
@@ -209,7 +316,7 @@
         </div>
 
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="database" nzTheme="outline"></i>
@@ -217,7 +324,7 @@
           <a href="#">Components</a>
         </div>
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="code" nzTheme="outline"></i>
@@ -226,7 +333,7 @@
         </div>
 
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="tags" nzTheme="outline"></i>
@@ -234,7 +341,7 @@
           <a href="#">Releases</a>
         </div>
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="folder" nzTheme="outline"></i>
@@ -242,7 +349,7 @@
           <a href="#">Project pages</a>
         </div>
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="file-add" nzTheme="outline"></i>
@@ -250,7 +357,7 @@
           <a href="#">Add item</a>
         </div>
         <div
-          class="flex flex-row items-center rounded-md hover:bg-blue-100 cursor-pointer mb-2"
+          class="flex flex-row items-center mb-2 cursor-pointer rounded-md hover:bg-blue-100"
         >
           <div class="w-2 p-2 mr-6">
             <i class="text-xl" nz-icon nzType="setting" nzTheme="outline"></i>

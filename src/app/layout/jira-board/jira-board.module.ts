@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { JiraBoardComponent } from './jira-board.component';
 
@@ -27,7 +28,14 @@ import {
   InsertRowAboveOutline,
   CaretLeftOutline,
   CaretRightOutline,
+  ThunderboltOutline,
+  StarOutline,
+  ShareAltOutline,
+  EllipsisOutline,
+  UpOutline,
+  DownOutline,
 } from '@ant-design/icons-angular/icons';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const icons: IconDefinition[] = [
   AppstoreFill,
@@ -46,6 +54,12 @@ const icons: IconDefinition[] = [
   InsertRowAboveOutline,
   CaretLeftOutline,
   CaretRightOutline,
+  ThunderboltOutline,
+  StarOutline,
+  ShareAltOutline,
+  EllipsisOutline,
+  UpOutline,
+  DownOutline,
 ];
 
 const routes: Routes = [
@@ -63,8 +77,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NzButtonModule,
     NzIconModule.forChild(icons),
-    HttpClientModule,
     NzDropDownModule,
+    HttpClientModule,
+    SharedModule,
+    DragDropModule,
   ],
 })
 export class JiraBoardModule {}

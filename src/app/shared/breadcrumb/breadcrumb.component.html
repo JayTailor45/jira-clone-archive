@@ -1,0 +1,6 @@
+<div class="container flex flex-row">
+  <div class="item" [class.ml-0]="first" *ngFor="let i of items; let first = first; let last = last;">
+    <a href="#" class="p-2">{{ i }}</a>
+    <span *ngIf="!last" class="p-2">/</span>
+  </div>
+</div>
