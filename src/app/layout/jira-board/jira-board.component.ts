@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Ticket {
-  title: string;
-  ticketKey: string;
-  assignedTo: string;
-  priority: 'HIGHEST' | 'HIGH' | 'MEDIUM' | 'LOWEST';
-  issueType: 'STORY' | 'TASK' | 'SUB-TASK' | 'BUG' | 'EPIC';
-}
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
+import { BoardTicket, Ticket } from 'src/models/ticket';
 
 @Component({
   selector: 'app-jira-board',
@@ -16,7 +14,13 @@ interface Ticket {
 export class JiraBoardComponent implements OnInit {
   isSidebarOpen = true;
   breadcrumb: string[] = [];
-  tickets: Ticket[] = [];
+  tickets: BoardTicket[] = [];
+  avaliableStatus = [
+    { id: 'BACKLOG', text: 'BACKLOG' },
+    { id: 'SELECTED_FOR_DEVELOPMENT', text: 'SELECTED FOR DEVELOPMENT' },
+    { id: 'IN_PROGRESS', text: 'IN PROGRESS' },
+    { id: 'DONE', text: 'DONE' },
+  ];
 
   constructor() {}
 
@@ -24,50 +28,64 @@ export class JiraBoardComponent implements OnInit {
     this.breadcrumb = ['Projects', 'Jira-clone', 'JC board'];
     this.tickets.push(
       {
-        title: 'MVP Product',
-        ticketKey: 'JC-1',
-        assignedTo: 'Jay Tailor',
-        issueType: 'EPIC',
-        priority: 'HIGH',
+        title: 'BACKLOG',
+        id: 'BACKLOG',
+        tasks: [],
       },
       {
-        title: 'Create MVP design',
-        ticketKey: 'JC-2',
-        assignedTo: 'Jay Tailor',
-        issueType: 'TASK',
-        priority: 'MEDIUM',
+        title: 'SELECTED_FOR_DEVELOPMENT',
+        id: 'SELECTED FOR DEVELOPMENT',
+        tasks: [],
       },
       {
-        title: 'Create header',
-        ticketKey: 'JC-3',
-        assignedTo: 'Jay Tailor',
-        issueType: 'SUB-TASK',
-        priority: 'MEDIUM',
+        title: 'IN_PROGRESS',
+        id: 'IN PROGRESS',
+        tasks: [
+          {
+            title: 'MVP Product',
+            ticketKey: 'JC-3',
+            assignedTo: 'Jay Tailor',
+            issueType: 'EPIC',
+            priority: 'HIGH',
+            status: 'IN_PROGRESS',
+          },
+        ],
       },
       {
-        title: 'Create board UI',
-        ticketKey: 'JC-4',
-        assignedTo: 'Jay Tailor',
-        issueType: 'SUB-TASK',
-        priority: 'HIGHEST',
+        title: 'DONE',
+        id: 'DONE',
+        tasks: [
+          {
+            title: 'Board UI',
+            ticketKey: 'JC-1',
+            assignedTo: 'Jay Tailor',
+            issueType: 'TASK',
+            priority: 'HIGH',
+            status: 'DONE',
+          },
+        ],
       }
     );
   }
 
-  getPriorityClass(ticket: Ticket): string {
-    if (ticket.priority === 'HIGHEST') {
-      return 'text-red-600';
-    } else if (ticket.priority === 'HIGH') {
-      return 'text-yellow-500';
-    } else if (ticket.priority === 'MEDIUM') {
-      return 'text-green-600';
-    } else if (ticket.priority === 'LOWEST') {
-      return 'text-green-300';
-    }
-    return '';
-  }
-
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  onTaskDrop(event: CdkDragDrop<Ticket[]>): void {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }

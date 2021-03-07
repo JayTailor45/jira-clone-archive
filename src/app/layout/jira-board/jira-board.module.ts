@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { JiraBoardComponent } from './jira-board.component';
 
@@ -76,9 +77,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NzButtonModule,
     NzIconModule.forChild(icons),
-    HttpClientModule,
     NzDropDownModule,
+    HttpClientModule,
     SharedModule,
+    DragDropModule,
   ],
 })
 export class JiraBoardModule {}
