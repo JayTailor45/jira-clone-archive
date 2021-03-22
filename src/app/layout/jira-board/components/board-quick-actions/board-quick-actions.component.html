@@ -1,0 +1,23 @@
+<div class="flex flex-row mt-2 min-h-14 space-x-6">
+  <div class="relative flex flex-col items-center w-48 h-8 p-1">
+    <input
+      class="w-full p-1 text-black rounded-sm outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-blue-600 hover:bg-gray-200"
+      type="text"
+    />
+    <i nz-icon nzType="search" class="absolute right-3 top-3"></i>
+  </div>
+  <div class="flex user-selector -space-x-2">
+    <div
+      class="flex items-center content-center w-8 h-8 p-3 leading-none text-center bg-green-700 rounded-full cursor-pointer user-avatar ring-2 ring-white transform hover:-translate-y-2 hover:z-10 ease-in-out duration-500"
+      *ngFor="let person of ['J', 'A', 'Y', '']"
+    >
+      <span class="font-semibold text-white">{{ person }}</span>
+    </div>
+  </div>
+  <button nz-button nzType="link" class="ml-5 font-bold text-gray-500">
+    Only My Issues
+  </button>
+  <button nz-button nzType="link" class="font-bold text-gray-500">
+    Recently Updated
+  </button>
+</div>

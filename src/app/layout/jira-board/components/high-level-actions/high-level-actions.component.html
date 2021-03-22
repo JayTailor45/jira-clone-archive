@@ -1,0 +1,32 @@
+
+<div class="flex justify-between mt-1">
+  <h4 class="text-2xl font-semibold">Kanban board</h4>
+  <div class="actions">
+    <button nz-button nzType="link" class="text-gray-700">
+      <i nz-icon nzType="thunderbolt" nzTheme="outline"></i>
+    </button>
+    <button nz-button nzType="link" class="text-gray-700">
+      <i nz-icon nzType="star" nzTheme="outline"></i>
+    </button>
+    <a
+      class="text-gray-700 hover-effect"
+      nz-dropdown
+      nzTrigger="click"
+      [nzDropdownMenu]="releaseMenu"
+    >
+      Release
+      <i nz-icon nzType="down"></i>
+    </a>
+    <nz-dropdown-menu #releaseMenu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item>Create a release</li>
+      </ul>
+    </nz-dropdown-menu>
+    <button nz-button nzType="link" class="text-gray-700">
+      <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+    </button>
+    <button nz-button nzType="link" class="text-gray-700">
+      <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+    </button>
+  </div>
+</div>

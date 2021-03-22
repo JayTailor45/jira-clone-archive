@@ -1,0 +1,46 @@
+<div class="mt-6">
+  <div class="relative overflow-y-scroll tickets-container">
+    <div
+      class="sticky top-0 flex flex-row justify-between headers space-x-4"
+    >
+      <div class="header">
+        <div class="inline-block mr-1">BACKLOG</div>
+        <span>4</span>
+      </div>
+      <div class="header">
+        <div class="inline-block mr-1">SELECTED FOR DEVELOPMENT</div>
+        <span>3</span>
+      </div>
+      <div class="header">
+        <div class="inline-block mr-1">IN PROGRESS</div>
+        <span>1</span>
+      </div>
+      <div class="header">
+        <div class="inline-block mr-1">DONE</div>
+        <span>0</span>
+      </div>
+    </div>
+    <div class="flex flex-row justify-between board-cols space-x-4">
+      <div
+        class="flex-1 bg-gray-100 backlog"
+        [id]="col.id"
+        *ngFor="let col of tickets"
+        cdkDropList
+        [cdkDropListData]="col.tasks"
+        [cdkDropListConnectedTo]="[
+          'BACKLOG',
+          'SELECTED FOR DEVELOPMENT',
+          'IN PROGRESS',
+          'DONE'
+        ]"
+        (cdkDropListDropped)="onTaskDrop($event)"
+      >
+        <app-ticket-item
+          cdkDrag
+          *ngFor="let task of col.tasks"
+          [item]="task"
+        ></app-ticket-item>
+      </div>
+    </div>
+  </div>
+</div>
