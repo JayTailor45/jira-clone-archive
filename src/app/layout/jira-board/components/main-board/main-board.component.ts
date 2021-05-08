@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
 import { BoardTicket, Ticket } from 'src/models/ticket';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { GET_ISSUES } from 'src/app/graphql/queries/issue';
-import { HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 interface IssuesResponse {
   issues: Ticket[];
@@ -29,7 +25,7 @@ export class MainBoardComponent implements OnInit {
     { id: 'DONE', text: 'DONE' },
   ];
   issues$: Observable<Ticket[]>;
-  constructor(private apollo: Apollo) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.tickets.push(
@@ -72,20 +68,7 @@ export class MainBoardComponent implements OnInit {
         ],
       }
     );
-    this.issues$ = this.apollo
-      .watchQuery<IssuesResponse>({
-        query: GET_ISSUES,
-        context: {
-          headers: new HttpHeaders().set(
-            'Authorization',
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUyNWFiZDU1M2FiMjI5YTRhMjcxMTMiLCJlbWFpbCI6InRhaWxvcmo2NEBnbWFpbC5jb20iLCJpYXQiOjE2MTY0MzYzOTMsImV4cCI6MTYxNjQ0MzU5M30.lg_qRlxI-knFRt1LFxuN4VmYvb-15AQ2ytwAMf56O04'
-          ),
-        },
-      })
-      .valueChanges.pipe(
-        map((res) => res.data.issues),
-        tap((res) => console.log(res))
-      );
+    this.issues$ = of([]);
   }
 
   onTaskDrop(event: CdkDragDrop<Ticket[]>): void {

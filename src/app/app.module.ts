@@ -7,7 +7,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GraphQLModule } from './graphql/graphql.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +16,6 @@ import { GraphQLModule } from './graphql/graphql.module';
     HttpClientModule,
     NzIconModule.forRoot([]),
     BrowserAnimationsModule,
-    GraphQLModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
