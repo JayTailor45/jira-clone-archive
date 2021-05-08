@@ -1,19 +1,14 @@
+import { IssueState } from './../../../../store/states/issue.state';
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
 import { BoardTicket, Ticket } from 'src/models/ticket';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { GET_ISSUES } from 'src/app/graphql/queries/issue';
-import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-
-interface IssuesResponse {
-  issues: Ticket[];
-}
+import { Select, Store } from '@ngxs/store';
+import { GetIssues } from 'src/app/store/actions';
 
 @Component({
   selector: 'app-main-board',
@@ -28,10 +23,15 @@ export class MainBoardComponent implements OnInit {
     { id: 'IN_PROGRESS', text: 'IN PROGRESS' },
     { id: 'DONE', text: 'DONE' },
   ];
-  issues$: Observable<Ticket[]>;
-  constructor(private apollo: Apollo) {}
+  @Select(IssueState.issues) issues$: Observable<Ticket[]>;
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
+    this.store.dispatch(new GetIssues());
+    this.issues$.subscribe((res) => {
+      console.log('res from component');
+      console.log(res);
+    });
     this.tickets.push(
       {
         title: 'BACKLOG',
@@ -72,20 +72,6 @@ export class MainBoardComponent implements OnInit {
         ],
       }
     );
-    this.issues$ = this.apollo
-      .watchQuery<IssuesResponse>({
-        query: GET_ISSUES,
-        context: {
-          headers: new HttpHeaders().set(
-            'Authorization',
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUyNWFiZDU1M2FiMjI5YTRhMjcxMTMiLCJlbWFpbCI6InRhaWxvcmo2NEBnbWFpbC5jb20iLCJpYXQiOjE2MTY0MzYzOTMsImV4cCI6MTYxNjQ0MzU5M30.lg_qRlxI-knFRt1LFxuN4VmYvb-15AQ2ytwAMf56O04'
-          ),
-        },
-      })
-      .valueChanges.pipe(
-        map((res) => res.data.issues),
-        tap((res) => console.log(res))
-      );
   }
 
   onTaskDrop(event: CdkDragDrop<Ticket[]>): void {
