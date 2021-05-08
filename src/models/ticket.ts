@@ -12,3 +12,8 @@ export interface BoardTicket {
   id: string;
   tasks: Ticket[];
 }
+
+export interface TicketStatuse {
+  id: string;
+  text: string;
+}

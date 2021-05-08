@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardTicket, Ticket } from 'src/models/ticket';
+import { BoardTicket, Ticket, TicketStatuse } from 'src/models/ticket';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { Observable, of } from 'rxjs';
-
-interface IssuesResponse {
-  issues: Ticket[];
-}
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-main-board',
@@ -18,14 +15,11 @@ interface IssuesResponse {
 })
 export class MainBoardComponent implements OnInit {
   tickets: BoardTicket[] = [];
-  avaliableStatus = [
-    { id: 'BACKLOG', text: 'BACKLOG' },
-    { id: 'SELECTED_FOR_DEVELOPMENT', text: 'SELECTED FOR DEVELOPMENT' },
-    { id: 'IN_PROGRESS', text: 'IN PROGRESS' },
-    { id: 'DONE', text: 'DONE' },
-  ];
+  avaliableStatus$: Observable<TicketStatuse[]>;
   issues$: Observable<Ticket[]>;
-  constructor() {}
+  constructor(
+    private apiService: ApiService,
+  ) {}
 
   ngOnInit(): void {
     this.tickets.push(
@@ -68,7 +62,7 @@ export class MainBoardComponent implements OnInit {
         ],
       }
     );
-    this.issues$ = of([]);
+    this.avaliableStatus$ = this.apiService.getTicketStatuses();
   }
 
   onTaskDrop(event: CdkDragDrop<Ticket[]>): void {
