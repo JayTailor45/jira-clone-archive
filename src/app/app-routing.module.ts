@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    loadChildren: () => import('./layout/landing/landing.module').then(m => m.LandingModule),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./layout/auth/auth.module').then(m => m.AuthModule),
   },
@@ -13,6 +18,10 @@ const routes: Routes = [
   {
     path: 'tailwind',
     loadChildren: () => import('./layout/tailwind/tailwind.module').then(m => m.TailwindModule),
+  },
+  {
+    path: '**',
+    redirectTo: '/',
   }
 ];
 
