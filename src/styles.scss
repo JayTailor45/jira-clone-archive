@@ -12,4 +12,58 @@
 .header {
   @apply flex-1 bg-gray-100 p-4 text-xs;
 }
+
+// From inputs
+.basic-text-input {
+  @apply focus:ring-blue-100 focus:border-blue-100 w-full border-gray-300 rounded-md shadow-sm px-4 py-2 mt-1;
+}
+
+
+// Buttons
+.btn {
+  @apply py-2 px-4 mb-1 rounded-sm font-semibold uppercase text-gray-700 m-1 relative disabled:opacity-50;
+}
+
+.btn-shadow {
+  @apply shadow-sm;
+}
+
+.primary {
+  @apply bg-blue-700 hover:bg-blue-700 text-white;
+}
+
+.secoundary {
+  @apply bg-blue-700 hover:bg-blue-700 text-white;
+}
+
+.ternary {
+  @apply ring-2 ring-gray-200 ring-inset;
+}
+
+.danger {
+  @apply bg-red-500 hover:bg-red-400 text-white;
+}
+
+// Spinner
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+  cursor: no-drop;
+}
+
 @import "tailwindcss/utilities";
